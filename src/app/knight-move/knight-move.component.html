@@ -1,0 +1,25 @@
+<table border="0" cellspacing="1" cellpadding="1">
+      <tr class="sizetr">
+        <td><label>Chess Size</label></td>
+        <td><input type="number" (input)="onSizeChange($event.target.value)"/></td>
+        <td *ngIf="size < 0"><span>Invalid Size</span></td>
+      </tr>
+      <tr class="coordtr">
+        <td><label>Knight X Co-ordinates</label></td>
+        <td><input type="number" (input)="setCoordinates($event.target.value, 'X')"/></td>
+        <td *ngIf="!isValidSize(xCoord) && xCoord <= size"><span>Wrong X Coordiantes</span></td>
+        <td *ngIf="isValidSize(xCoord) && xCoord > size"><span>Out of Bound X Coordiantes</span></td>
+      </tr>
+      <tr class="coordtr">
+        <td><label>Knight Y Co-ordinates</label></td>
+        <td><input type="number" (input)="setCoordinates($event.target.value, 'Y')"/></td>
+        <td *ngIf="!isValidSize(yCoord) && yCoord <= size"><span>Wrong Y Coordiantes</span></td>
+        <td *ngIf="isValidSize(yCoord) && yCoord > size"><span>Out of Bound Y Coordiantes</span></td>
+      </tr>
+  </table>
+  <br />
+  <table id="chess" *ngIf="isValidSize(this.size)" cellpadding="30" border="1">
+    <tr *ngFor="let row of chessBoard; let i=index" [ngClass]="{'even': i%2==0, 'odd': i%2==1}">
+      <td *ngFor="let col of row; let j=index" id="{{chessBoard[i][j]}}" [ngClass]="{'brown': chessBoard[i][j] === 1, 'green': chessBoard[i][j] === 2}"></td>
+    </tr>
+  </table>

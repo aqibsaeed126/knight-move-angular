@@ -1,0 +1,17 @@
+tr.even > td:nth-child(even), tr.odd > td:nth-child(odd) {
+  background-color: black;
+}
+tr.error > td {
+  color: red
+}
+tr.error > td > input{
+  border-color: red
+}
+
+.brown {
+  background-color: brown !important;
+}
+
+.green {
+  background-color: green !important;
+}
